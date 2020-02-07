@@ -1,0 +1,8 @@
+version: '3.7'
+services:
+    bitcoinsv:
+        container_name: bitcoind
+        build: ./sv
+        ports: ['18332:18332']
+        volumes:
+            - ./sv/bitcoin:/home/root/.bitcoin
