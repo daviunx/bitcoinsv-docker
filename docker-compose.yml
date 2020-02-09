@@ -1,8 +1,22 @@
 version: '3.7'
 services:
-    bitcoinsv:
-        container_name: bitcoind
-        build: ./sv
-        ports: ['18332:18332']
+    sv-node1:
+        container_name: sv-node1
+        build: ./sv/node-1
+        ports: ['18332:18332', '245:245']
         volumes:
-            - ./sv/bitcoin:/home/root/.bitcoin
+            - ./sv/node-1:/home/root/.bitcoin
+        networks:
+          - svnet
+
+    sv-node2:
+        container_name: sv-node2
+        build: ./sv/node-2
+        ports: ['28332:28332', '246:246']
+        volumes:
+            - ./sv/node-2:/home/root/.bitcoin
+        networks:
+          - svnet
+
+networks:
+    svnet:

@@ -10,7 +10,7 @@ RUN apt-get install -y wget python3
 RUN wget https://download.bitcoinsv.io/bitcoinsv/1.0.1/bitcoin-sv-1.0.1.tar.gz && tar -xf bitcoin-sv-1.0.1.tar.gz
 RUN cd bitcoin-sv-1.0.1 && ./autogen.sh && ./configure && make && make install
 RUN mkdir .bitcoin
-COPY bitcoin/bitcoin.conf .bitcoin
+COPY bitcoin.conf .bitcoin
 
 CMD ["bitcoind", "--conf=/home/root/.bitcoin/bitcoin.conf"]
 
